@@ -35,6 +35,18 @@ if (song1_status == false) {
    else{
      song1.stop();
    }
+   if(scorerightWrist > 0.2){
+    circle(leftWristX,leftWristY,0);
+    console.log("ssjsbd")
+    song1.stop()
+    if (song2_status == false) {
+     song2.play();
+     console.log("nonsense")
+    } 
+       }
+       else{
+         song2.stop();
+       }
   }
    function modelLoaded(){
     console.log("! ! ! ! ! M O D E L ! ! L O A D E D ! ! ! ! !")
@@ -44,6 +56,8 @@ function gotPoses(result){
     if(result.length > 0){
       console.log(result);
       scoreleftWrist = result[0].pose.keypoints[9].score;
+      scorerightWrist = result[0].pose.keypoints[10].score;
+    console.log("score left =" +scoreleftWrist + "score right =" + scorerightWrist);
       console.log("scoreLeftWrist = " + scoreleftWrist);
         leftWristX = result[0].pose.leftWrist.x;
         leftWristY = result[0].pose.leftWrist.y;
